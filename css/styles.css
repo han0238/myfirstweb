@@ -1,0 +1,60 @@
+div.header {
+  text-align: center;
+  border-bottom: solid;
+}
+div.login {
+  float: left;
+  margin-top: 20px;
+  border: 1px solid black ;
+  border-width: thick;
+  padding: 10px;
+  margin-left: 10px;
+  width: 180px;
+  background-color: gray;
+  height: 800px;
+  
+}
+#id{
+  margin-bottom: 2px;  
+}
+div.sign{
+  margin-top: 10px;
+  margin-left: 60px;
+}
+div.nav {
+  border: 1px solid black ;
+  margin-top: 20px;  
+  width: 180px;
+  height: 500px;
+  background-color: white;
+  height: 700px;
+ 
+}
+div.section {
+  border: 1px solid black ; 
+  border-width: thick;
+  margin-left: 230px;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-right: 60%;
+  height: 820px;
+  width: 400px;
+  
+
+}
+div.article{
+  margin-left: 30px;
+  color: red;
+}
+ol {
+  float:left;
+  text-align: left;
+}
+li {
+  margin-top: 10px;
+  
+  font-size: 20px;
+}
+
+
+
