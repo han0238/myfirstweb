@@ -6,33 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Board</title>
   <link href="./css/styles.css" rel="stylesheet"/> 
+  <script src="./js/index.js"></script>
 </head>
 <body>
   <div class="header">
     <h1>게시판</h1>
   </div>   
   <div class="login">
-    <div id="id"> 
-     <input type="text" id="id" placeholder="아이디" style="width: 170px;"/>
-    </div>
-    <div>
-      <input type="password" id="password" placeholder="비밀번호" style="width: 170px;"/>
-    </div>  
-    <div class="sign">
-      <input type="button" value="로그인"  />
-      <input type="button" value="회원가입" />
-    </div>
-    <div class="nav">
-      <ul>
-        <li>프로필</li>
-        <li>게시판</li>
-        <li>메세지</li>
-      </ul>
-    </div>
+    <input type="text" id="id" placeholder="아이디" />
+    <input type="password" id="password" placeholder="비밀번호" />
+    <input type="button" value="로그인" onclick="login()"/>    
+    <input type="button" value="회원가입" onclick="newid()"/>    
   </div>
   <div class="section">
     <div class="article">
-      <p>허결바보</p>
+      <p>목록 로그인후</p>
     </div>
   </div> 
 </body>

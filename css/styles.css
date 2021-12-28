@@ -9,25 +9,32 @@ div.login {
   border-width: thick;
   padding: 10px;
   margin-left: 10px;
-  width: 180px;
+  width: 200px;
   background-color: gray;
   height: 800px;
   
 }
-#id{
+div.id{
   margin-bottom: 2px;  
+  width: 200px;
+}
+div.pw{
+  width: 180px;
 }
 div.sign{
   margin-top: 10px;
   margin-left: 60px;
 }
 div.nav {
+  float: left;
+  margin-top: 20px;
   border: 1px solid black ;
-  margin-top: 20px;  
+  border-width: thick;
+  padding: 10px;
+  margin-left: 10px;
   width: 180px;
-  height: 500px;
-  background-color: white;
-  height: 700px;
+  background-color: gray;
+  height: 800px;
  
 }
 div.section {
@@ -46,12 +53,27 @@ div.article{
 ol {
   float:left;
   text-align: left;
+  ;
 }
 li {
-  margin-top: 10px;
-  
+  margin-top: 10px; 
   font-size: 20px;
+  color:black;
+  
 }
 
-
-
+a:link {
+  text-decoration: none;
+  color: black;
+  
+}
+/* newid */
+.newid{
+  width:500px;
+}
+.newid p{
+  font-size: 2px;
+}
+.newid span{
+  font-size: 2px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link href="../css/styles.css" rel="stylesheet"/> 
+
+</head>
+<body>
+  <h1>회원 가입</h1>
+  
+  <table class="newid">
+      <tr >
+        <td colspan="2">이름*</td>    
+        <td><input type="text" placeholder="이름 입력"></td>             
+      </tr>
+      <tr>
+        <td colspan="2">전화번호*</td>
+        <td><input type="text" placeholder="010-0000-0000"></td>             
+      </tr>
+      <tr>
+        <td colspan="2">사진</td>  
+        <td>
+          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+          <p>최대용량 10M / 가로와 새로 비율이 같은 사진을 올려주세요.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">입사일*</td>             
+        <td><input type="text" placeholder="예시 : 2000.00.00"></td>             
+      </tr>
+      <tr>
+        <td colspan="2">지점*</td> 
+        <td>
+          <select name="place" id="place">
+            <option value="">지점선택</option>
+            <option value="seoul">서울</option>
+            <option value="incheon">인천</option>
+            <option value="busan">부산</option>
+          </select>
+        </td> 
+      </tr>
+      <tr>
+        <td colspan="2">직급*</td>   
+        <td>
+        <select name="grade" id="grade">
+          <option value="">직급선택</option>
+          <option value="seoul">사장</option>
+          <option value="incheon">부장</option>
+          <option value="busan">과장</option>
+        </select>
+        </td>  
+      </tr>
+      <tr>
+        <td colspan="2">기본급*</td>   
+        <td><input type="text" placeholder="기본급 입력"></td>             
+      </tr>
+      <tr>
+        <td colspan="2">수업급여* </br>(파트강사)</td>    
+        <td><input type="text" placeholder="타임비 입력 입력"><span>정직원인 경우 추가근무 수당 입력</span></td>             
+      </tr>
+      <tr>
+        <td colspan="2">연차일</td> 
+        <td><input type="text" placeholder="00일"></td>             
+      </tr>
+      <tr>
+        <td>생년월일</td>     
+      </tr>
+      <tr>
+        <td>이메일</td>     
+      </tr>
+      <tr>
+        <td>주소</td>     
+      </tr>   
+  </table>
+  
+
+  저장 
+  취소
+  
+</body>
+</html>
