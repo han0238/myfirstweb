@@ -9,30 +9,44 @@
 
 </head>
 <body>
+  <div id="header">
+  </div>
   <h1>회원 가입</h1>
-  
+
+  <div class="cancel">
+    취소 
+  </div>
+  <div class="save">
+    저장 
+  </div>  
   <table class="newid">
-      <tr >
-        <td colspan="2">이름*</td>    
+      <tr>
+        <td colspan="2">
+          기본 정보                
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="2" id="name">이름*</td>    
         <td><input type="text" placeholder="이름 입력"></td>             
       </tr>
       <tr>
-        <td colspan="2">전화번호*</td>
+        <td colspan="2" id="name">전화번호*</td>
         <td><input type="text" placeholder="010-0000-0000"></td>             
       </tr>
       <tr>
-        <td colspan="2">사진</td>  
+        <td colspan="2" id="name">사진</td>  
         <td>
           <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
           <p>최대용량 10M / 가로와 새로 비율이 같은 사진을 올려주세요.</p>
         </td>
       </tr>
       <tr>
-        <td colspan="2">입사일*</td>             
+        <td colspan="2" id="name">입사일*</td>             
         <td><input type="text" placeholder="예시 : 2000.00.00"></td>             
       </tr>
       <tr>
-        <td colspan="2">지점*</td> 
+        <td colspan="2" id="name">지점*</td> 
         <td>
           <select name="place" id="place">
             <option value="">지점선택</option>
@@ -43,7 +57,7 @@
         </td> 
       </tr>
       <tr>
-        <td colspan="2">직급*</td>   
+        <td colspan="2" id="name">직급*</td>   
         <td>
         <select name="grade" id="grade">
           <option value="">직급선택</option>
@@ -54,31 +68,40 @@
         </td>  
       </tr>
       <tr>
-        <td colspan="2">기본급*</td>   
+        <td colspan="2" id="name">기본급*</td>   
         <td><input type="text" placeholder="기본급 입력"></td>             
       </tr>
       <tr>
-        <td colspan="2">수업급여* </br>(파트강사)</td>    
-        <td><input type="text" placeholder="타임비 입력 입력"><span>정직원인 경우 추가근무 수당 입력</span></td>             
+        <td colspan="2" id="name">수업급여* </br>(파트강사)</td>    
+        <td><input type="text" placeholder="타임비 입력 입력"><span>     정직원인 경우 추가근무 수당 입력</span></td>             
       </tr>
       <tr>
-        <td colspan="2">연차일</td> 
+        <td colspan="2" id="name">연차일</td> 
         <td><input type="text" placeholder="00일"></td>             
       </tr>
       <tr>
-        <td>생년월일</td>     
+        <td colspan="2" id="name">생년월일*</td>     
+        <td><input type="text" placeholder="예시 : 2000.00.00"></td>                     
       </tr>
       <tr>
-        <td>이메일</td>     
+        <td colspan="2" id="name">이메일*</td>     
+        <td><input type="text" placeholder="xxxxx@xxxxx.xxx"></td>                     
       </tr>
       <tr>
-        <td>주소</td>     
-      </tr>   
+        <td colspan="2" id="name">주소*</td>
+        
+        <td rowspan="2">
+          <input type="text" placeholder="우편번호"/>
+          <button>주소검색</button>
+        <br/>  
+        <input type="text" placeholder="도로명 주소"/>
+        <br/>
+        <input type="text" placeholder="상세 주소"/>
+        </td>
+      </tr> 
+  
   </table>
   
 
-  저장 
-  취소
-  
 </body>
 </html>
