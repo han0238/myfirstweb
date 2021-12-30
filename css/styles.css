@@ -1,6 +1,11 @@
 div.header {
   text-align: center;
   border-bottom: solid;
+  background-color: gray;
+}
+.header h1{
+  color: white;
+  padding-top: 20px;
 }
 div.login {
   float: left;
@@ -9,7 +14,7 @@ div.login {
   border-width: thick;
   padding: 10px;
   margin-left: 10px;
-  width: 200px;
+  width: 150px;
   background-color: gray;
   height: 800px;
   
@@ -49,6 +54,13 @@ div.section {
 div.article{
   margin-left: 30px;
   color: red;
+  margin-top: 80px;
+}
+.article li {
+  margin-top: 10px; 
+  font-size: 20px;
+  color:black;
+  border-bottom: 1px solid gray;
 }
 ol {
   float:left;
@@ -59,7 +71,7 @@ li {
   margin-top: 10px; 
   font-size: 20px;
   color:black;
-  
+   
 }
 
 a:link {
@@ -76,17 +88,21 @@ a:link {
   padding: 10px;
   height: 600px;
   margin-top: 100px;
+  border-collapse: collapse;
+  margin: auto;
   
 }
-#name{
+#title{
   background-color: rgba(228, 216, 216, 0.947);
   padding-left: 10px;  
 }
 .newid p{
   font-size: 2px;
+  margin-left: 20px;
 }
 .newid span{
   font-size: 2px;
+
 }
 
 .save {
@@ -98,6 +114,7 @@ a:link {
   margin-left: 10px;
   padding: 10px;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 .cancel {
@@ -109,6 +126,7 @@ a:link {
   margin-left: 10px;
   padding: 10px;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 #header {
@@ -126,6 +144,27 @@ td {
   
 }
 
-input {
+.newid input {
  padding: 10px;
+ margin-left: 20px;
+}
+
+.newid select{
+  padding: 10px;
+  margin-left: 20px;
+  width: 170px;
+}
+
+.info {
+  margin: auto; 
+  border-top: solid 1px black;
+  margin-top: 100px;
+  padding-top: 50px;
+  margin-bottom: 10px;
+}
+
+.newid caption{
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 20px;
 }

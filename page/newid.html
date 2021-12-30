@@ -3,103 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta title="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입</title>
   <link href="../css/styles.css" rel="stylesheet"/> 
-
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="../js/index.js"></script>
 </head>
 <body>
-  <div id="header">
-  </div>
+  <div class="header">
+    <a href="../index.html" target="_blank"><h1>게시판</h1></a>
+  </div>   
   <h1>회원 가입</h1>
-
   <div class="cancel">
-    취소 
+   취소 
   </div>
-  <div class="save">
-    저장 
+  <div class="save" onclick="getId()">
+    저장
   </div>  
+  <p class="info"></p>
   <table class="newid">
+    <caption>기본 정보</caption>   
+      <tbody>             
       <tr>
-        <td colspan="2">
-          기본 정보                
-        </td>
-        <td></td>
+        <td colspan="2" id="title">아이디*</td>    
+        <td><input type="text" placeholder="이름 입력" id="id"></td>             
       </tr>
       <tr>
-        <td colspan="2" id="name">이름*</td>    
-        <td><input type="text" placeholder="이름 입력"></td>             
+        <td colspan="2" id="title">비밀번호</td>    
+        <td><input type="text" placeholder="이름 입력" id="password"></td>             
       </tr>
       <tr>
-        <td colspan="2" id="name">전화번호*</td>
-        <td><input type="text" placeholder="010-0000-0000"></td>             
+        <td colspan="2" id="title">이름*</td>    
+        <td><input type="text" placeholder="이름 입력" id="name"></td>             
       </tr>
       <tr>
-        <td colspan="2" id="name">사진</td>  
+        <td colspan="2" id="title">전화번호*</td>
+        <td><input type="text" placeholder="010-0000-0000" id="tel"></td>             
+      </tr>
+      <tr>
+        <td colspan="2" id="title">사진</td>  
         <td>
-          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+          <input type="file" id="avatar" title="avatar" accept="image/png, image/jpeg" id="photo">
           <p>최대용량 10M / 가로와 새로 비율이 같은 사진을 올려주세요.</p>
         </td>
-      </tr>
       <tr>
-        <td colspan="2" id="name">입사일*</td>             
-        <td><input type="text" placeholder="예시 : 2000.00.00"></td>             
-      </tr>
-      <tr>
-        <td colspan="2" id="name">지점*</td> 
+        <td colspan="2" id="title">성별*</td> 
         <td>
-          <select name="place" id="place">
-            <option value="">지점선택</option>
-            <option value="seoul">서울</option>
-            <option value="incheon">인천</option>
-            <option value="busan">부산</option>
+          <select name="gender" id="gender">
+            <option value="man">남자</option>
+            <option value="woman">여자</option>
           </select>
         </td> 
       </tr>
       <tr>
-        <td colspan="2" id="name">직급*</td>   
-        <td>
-        <select name="grade" id="grade">
-          <option value="">직급선택</option>
-          <option value="seoul">사장</option>
-          <option value="incheon">부장</option>
-          <option value="busan">과장</option>
-        </select>
-        </td>  
-      </tr>
-      <tr>
-        <td colspan="2" id="name">기본급*</td>   
-        <td><input type="text" placeholder="기본급 입력"></td>             
-      </tr>
-      <tr>
-        <td colspan="2" id="name">수업급여* </br>(파트강사)</td>    
-        <td><input type="text" placeholder="타임비 입력 입력"><span>     정직원인 경우 추가근무 수당 입력</span></td>             
-      </tr>
-      <tr>
-        <td colspan="2" id="name">연차일</td> 
-        <td><input type="text" placeholder="00일"></td>             
-      </tr>
-      <tr>
-        <td colspan="2" id="name">생년월일*</td>     
+        <td colspan="2" id="title">생년월일*</td>     
         <td><input type="text" placeholder="예시 : 2000.00.00"></td>                     
       </tr>
       <tr>
-        <td colspan="2" id="name">이메일*</td>     
-        <td><input type="text" placeholder="xxxxx@xxxxx.xxx"></td>                     
+        <td colspan="2" id="title">이메일*</td>     
+        <td><input type="text" placeholder="xxxxx@xxxxx.xxx" id="email"></td>                     
       </tr>
       <tr>
-        <td colspan="2" id="name">주소*</td>
+        <td colspan="2" id="title">주소*</td>
         
         <td rowspan="2">
-          <input type="text" placeholder="우편번호"/>
-          <button>주소검색</button>
+          <input type="text" id="zipCode" placeholder="우편번호"/>
+          <button onclick="findAddress()">주소검색</button>
         <br/>  
-        <input type="text" placeholder="도로명 주소"/>
+        <input type="text" id="addr" placeholder="도로명 주소"/>
         <br/>
         <input type="text" placeholder="상세 주소"/>
         </td>
       </tr> 
-  
+    </tbody>
   </table>
   
 
