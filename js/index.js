@@ -1,12 +1,12 @@
 function login(){
 
   let id = document.getElementById('id').value
-  let pw = document.getElementById('password').value
-
+  let password = document.getElementById('password').value
   
-  if(id == "asd" && pw == "1234") {
+
+  if(localStorage.getItem(id && password)){
+    sessionStorage.setItem('id', id);
     location.href = './page/board.html';
-       
   } else {
     alert("로그인 실패");
     
@@ -15,47 +15,59 @@ function login(){
 
 function newid(){
   location.href = './page/newid.html';
+  
 }
 
 function logout(){
   location.href = '../index.html';
-
+  sessionStorage.removeItem('id');
 }
 function getId(){
 
-  let id = document.getElementById('id').value
-  let password = document.getElementById('password').value
-  let name = document.getElementById('name').value
-  let tel = document.getElementById('tel').value
-  let photo = document.getElementById('photo')
-  let gender = document.getElementById('gender').value
-  let birth = document.getElementById('birth').value
-  let email = document.getElementById('email').value
-  let addr = document.getElementById('addr').value
+  check = document.frm1
 
-  let member = {
-    id:id,
-    password:password,
-    name:name,
-    tel:tel,
-    photo:photo,
-    gender:gender,
-    birth:birth,
-    email:email,
-    addr:addr
+  if (check.id.value=="" || check.password.value==""){
+    if(check.id.value==""){
+      alert('필수 아이디가 비어있습니다.')
+      return id.focus();
+    }
+    if(check.password.value=="" ){
+      alert('필수 비밀번호가 비어있습니다.')
+      return password.focus();
+    }  
+  } else {
+    let id = document.getElementById('id').value
+    let password = document.getElementById('password').value
+    let name = document.getElementById('name').value
+    let tel = document.getElementById('tel').value
+    let photo = document.getElementById('photo')
+    let gender = document.getElementById('gender').value
+    let birth = document.getElementById('birth').value
+    let email = document.getElementById('email').value
+    let addr = document.getElementById('addr').value
+    
+    let member = {
+      id:id,
+      password:password,
+      name:name,
+      tel:tel,
+      photo:photo,
+      gender:gender,
+      birth:birth,
+      email:email,
+      addr:addr
+    }
+    let data = JSON.stringify(member);
+    localStorage.setItem(id,data);
   }
 
-  let data = JSON.stringify(member);
 
-  localStorage.setItem(id,data);
-
-  
+  location.href = '../index.html';
 }
 
 
+      
 
-
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 function findAddress() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -87,3 +99,6 @@ function findAddress() {
         }
     }).open();
 }
+
+
+
