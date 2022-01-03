@@ -23,24 +23,60 @@ function logout(){
   sessionStorage.removeItem('id');
 }
 
+
+
 function getId(){
+
+ 
+  let RegExp = /^[a-zA-Z0-9]{8,16}$/; 
+  let RegExp_p = /^[a-zA-Z0-9]{4,16}$/; 
+  
 
   check = document.frm1
 
-
-  if (check.id.value=="" || check.password.value==""){
+  if (check.id.value=="" || check.password.value=="" || check.Name.value==""|| check.tel.value==""|| check.birth.value==""|| check.email.value==""|| check.addr.value==""){
     if(check.id.value==""){
       alert('필수 아이디가 비어있습니다.')
       return id.focus();
+
+    } else if(!RegExp.test(check.id.value)){
+      alert("아이디는 8~16자의 영문 숫자로만 입력하여 주세요.");
+      return id.focus();
     }
+
     if(check.password.value=="" ){
       alert('필수 비밀번호가 비어있습니다.')
       return password.focus();
+
+    } else if(!RegExp_p.test(check.password.value)){
+      alert("비밀번호는 4~16자의 영문 숫자로만 입력하여 주세요.");
+      return id.focus();
+    }
+      
+    if(check.Name.value=="" ){
+      alert('이름을 입력 해주세요.')
+      return Name.focus();
     }  
+    if(check.tel.value=="" ){
+      alert('전화번호를 입력 해주세요.')
+      return tel.focus();
+    }  
+    if(check.birth.value=="" ){
+      alert('생년월일을 입력 해주세요.')
+      return birth.focus();
+    }  
+    if(check.email.value=="" ){
+      alert('E-Mail을 입력 해주세요.')
+      return email.focus();
+    } 
+    if(check.addr.value=="" ){
+      alert('주소를 입력 해주세요.')
+      return addr.focus();
+    } 
   } else {
     let id = document.getElementById('id').value
     let password = document.getElementById('password').value
-    let name = document.getElementById('name').value
+    let Name = document.getElementById('Name').value
     let tel = document.getElementById('tel').value
     let photo = document.getElementById('photo')
     let gender = document.getElementById('gender').value
@@ -51,7 +87,7 @@ function getId(){
     let member = {
       id:id,
       password:password,
-      name:name,
+      Name:Name,
       tel:tel,
       photo:photo,
       gender:gender,
@@ -62,7 +98,8 @@ function getId(){
     let data = JSON.stringify(member);
     localStorage.setItem(id,data);
   }
-  alert("회원가입 완료");
+  alert("회원가입완료");
+
   location.href = '../index.html';
 }
 
