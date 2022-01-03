@@ -78,7 +78,7 @@ function getId(){
     let password = document.getElementById('password').value
     let Name = document.getElementById('Name').value
     let tel = document.getElementById('tel').value
-    let photo = document.getElementById('photo')
+    let photo = document.getElementById('photo').value
     let gender = document.getElementById('gender').value
     let birth = document.getElementById('birth').value
     let email = document.getElementById('email').value
