@@ -3,7 +3,9 @@ function login(){
   let id = document.getElementById('id').value
   let password = document.getElementById('password').value
   
-  if(localStorage.getItem(id && password)){
+  let aaaa = JSON.parse(localStorage.getItem(id));
+
+  if(aaaa.password === password){
     sessionStorage.setItem('id', id);
     location.href = './page/board.html';
   } else {
@@ -21,13 +23,31 @@ function logout(){
   sessionStorage.removeItem('id');
 }
 
+function checkEmpty(content){
+  if(content.trim().length==0){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function checkReg(reg,content){
+  if(reg.test(content)){
+    return true;
+  }else{
+    return false;
+  }
+}
 function getId(){
-
-
-  
   check = document.frm1
 
-  if (check.id.value=="" || check.password.value=="" || check.Name.value==""|| check.tel.value==""|| check.birth.value==""|| check.email.value==""|| check.addr.value==""){
+  if (check.id.value=="" 
+      || check.password.value=="" 
+      || check.Name.value==""
+      || check.tel.value==""
+      || check.birth.value==""
+      || check.email.value==""
+      || check.addr.value==""){
     if(check.id.value==""){
       alert('필수 아이디가 비어있습니다.')
       return id.focus();
@@ -127,3 +147,70 @@ function findAddress() {
     }).open();
 }
 
+
+
+
+// onclick
+
+function boardSet(){
+  boardList.forEach(board => createTr(board));
+  }
+// 게시판 데모데이터
+
+// let boardList = [{no : 0, title: "글제목", content:"글내용", createdAt: "2022-01-04", viewCount:0, writer:"아이디"}]
+let boardList = Array(45)
+                  .fill()
+                  .map((_, i) => { 
+                    return {  no:i+1,
+                              title:`글제목_${i+1}`,
+                              content:'글내용'+(i+1),
+                              createdAt:'2021-01-04',
+                              viewCount:0,
+                              writer:'작성자' }});
+
+//게시판 함수
+function createTr(board){
+  let tr = document.createElement('tr');
+  let tdNo = document.createElement('td');
+  let tdTtile = document.createElement('td');
+  let tdCdate = document.createElement('td');
+  let tdWriter = document.createElement('td');
+  let tdVc = document.createElement('td');
+
+    tdNo.innerText = board.no;
+    tdTtile.innerText = board.title;
+    tdCdate.innerText = board.createdAt;
+    tdWriter.innerText = board.writer;
+    tdVc.innerText = board.viewCount;
+
+    tr.appendChild(tdNo);
+    tr.appendChild(tdTtile);
+    tr.appendChild(tdWriter);
+    tr.appendChild(tdCdate);
+    tr.appendChild(tdVc);
+
+  let tbody = document.getElementById('tbody');
+
+    tbody.appendChild(tr);
+}
+// 페이지 나누기
+
+let pageNumber = 1;
+let pageSize = 14;
+let totalCount = boardList.length
+let totalPageCount = Math.ceil(totalCount / pageSize) = totalPageCount
+
+
+function boardPage(){
+
+  for(let idx = 0; idx < pageSize; idx++){
+    board = boardList[(pageNumber-1)*10+idx];
+    createTr(board);
+  }
+}
+
+// 페이지 버튼 1부터 ~ totalCount까지 [각 페이지 숫자별 페이지 이동 함수]
+// 각 페이지 숫자를 누르면 다른 개시글 목록 보이기
+// 1. tbody.innerText=''; = 리스트비우기
+// 2. pageNumber = 2; 반복문으로 처리
+// 3. boardPage 함수 호출 
