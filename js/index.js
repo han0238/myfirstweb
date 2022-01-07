@@ -102,6 +102,7 @@ function getId(){
       email:email,
       addr:addr
     }
+
     let data = JSON.stringify(member);
     localStorage.setItem(id,data);
   }
@@ -168,8 +169,13 @@ let boardList = Array(45)
                               viewCount:0,
                               writer:'작성자' }});
 
+
 //게시판 함수
 function createTr(board){
+
+  if(!board){
+    return;
+  }
   let tr = document.createElement('tr');
   let tdNo = document.createElement('td');
   let tdTtile = document.createElement('td');
@@ -197,41 +203,59 @@ function createTr(board){
 
 let pageNumber = 1;
 let pageSize = 14;
-let totalCount = boardList.length
-let totalPageCount = Math.ceil(totalCount / pageSize)
+let totalCount = boardList.length;
+let totalPageCount = Math.ceil(totalCount / pageSize);
 
 
 function boardPage(){
-
+  
   for(let idx = 0; idx < pageSize; idx++){
-    board = boardList[(pageNumber-1)*10+idx];
-    createTr(board);
+    
+      board = boardList[(pageNumber-1)*pageSize+idx];
+      createTr(board);
+    }
   }
-}
+
+
 
 function boardPageMove(){
-  console.log(totalPageCount);
-  console.log(totalPageCount);
+
   for(let num = 1; num <= totalPageCount; num ++){
     //페이지 엘리먼스 생성
-    let pageNumber = document.createElement('span');
+    let pageMove = document.querySelector('#pageMove');
+    let pageNumbers = document.createElement('span');
     
     // 번호 삽입
-    pageNumber.innerText(num);
-  
-    pageNumber.addEventListener('click',()=>{
+    pageNumbers.innerText = num;
+    pageMove.appendChild(pageNumbers)
+
+
+    pageNumbers.addEventListener('click',()=>{
+      pageNumber = num;
+      document.getElementById('tbody').innerText='';
+      boardPage();
+      
       /* 게시글 리스트를 그려주는 함수 구현 */
-    });
-  
-    // 페이지 번호를 감싸고 있는 태그선택
-    let pageWrapper = document.getElementById('pageWrapper');
-  
-    // 페이지 세팅
-    pageWrapper.appendChild(pageNumber);
-  }
+    });  
+  }     
+}
+
+function firstCall(){
+  boardPage()
+  boardPageMove()
+}
+
+function boardCreat(){
+  location.href = './boardcreat.html';
+
+}
   // 페이지 버튼 1부터 ~ totalCount까지 [각 페이지 숫자별 페이지 이동 함수]
   // 각 페이지 숫자를 누르면 다른 개시글 목록 보이기
   // 1. tbody.innerText=''; = 리스트비우기
   // 2. pageNumber = 2; 반복문으로 처리
   // 3. boardPage 함수 호출 
-}
+
+
+
+
+
