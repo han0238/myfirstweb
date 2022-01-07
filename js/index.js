@@ -198,7 +198,7 @@ function createTr(board){
 let pageNumber = 1;
 let pageSize = 14;
 let totalCount = boardList.length
-let totalPageCount = Math.ceil(totalCount / pageSize) = totalPageCount
+let totalPageCount = Math.ceil(totalCount / pageSize)
 
 
 function boardPage(){
@@ -209,8 +209,29 @@ function boardPage(){
   }
 }
 
-// 페이지 버튼 1부터 ~ totalCount까지 [각 페이지 숫자별 페이지 이동 함수]
-// 각 페이지 숫자를 누르면 다른 개시글 목록 보이기
-// 1. tbody.innerText=''; = 리스트비우기
-// 2. pageNumber = 2; 반복문으로 처리
-// 3. boardPage 함수 호출 
+function boardPageMove(){
+  console.log(totalPageCount);
+  console.log(totalPageCount);
+  for(let num = 1; num <= totalPageCount; num ++){
+    //페이지 엘리먼스 생성
+    let pageNumber = document.createElement('span');
+    
+    // 번호 삽입
+    pageNumber.innerText(num);
+  
+    pageNumber.addEventListener('click',()=>{
+      /* 게시글 리스트를 그려주는 함수 구현 */
+    });
+  
+    // 페이지 번호를 감싸고 있는 태그선택
+    let pageWrapper = document.getElementById('pageWrapper');
+  
+    // 페이지 세팅
+    pageWrapper.appendChild(pageNumber);
+  }
+  // 페이지 버튼 1부터 ~ totalCount까지 [각 페이지 숫자별 페이지 이동 함수]
+  // 각 페이지 숫자를 누르면 다른 개시글 목록 보이기
+  // 1. tbody.innerText=''; = 리스트비우기
+  // 2. pageNumber = 2; 반복문으로 처리
+  // 3. boardPage 함수 호출 
+}
