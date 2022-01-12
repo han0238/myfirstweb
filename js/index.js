@@ -159,18 +159,21 @@ function boardSet(){
 // 게시판 데모데이터
 
 // let boardList = [{no : 0, title: "글제목", content:"글내용", createdAt: "2022-01-04", viewCount:0, writer:"아이디"}]
+
+
 let boardList = Array(45)
                   .fill()
-                  .map((_, i) => { 
-                    return {  no:i+1,
-                              title:`글제목_${i+1}`,
-                              content:'글내용'+(i+1),
+                  .map((_, getBoard) => { 
+                    return {  no:getBoard+1,
+                              title:`title`,
+                              content:'글내용'+(getBoard+1),
                               createdAt:'2021-01-04',
                               viewCount:0,
-                              writer:'작성자' }});
+                              writer:'id' }});
 
 
-//게시판 함수
+
+
 function createTr(board){
 
   if(!board){
@@ -247,14 +250,37 @@ function firstCall(){
 
 function boardCreat(){
   location.href = './boardcreat.html';
-
 }
+function newBoard(){
+  let title = document.getElementById('title').value
+  let mainText = document.getElementById('mainText').value
+  
+  let getBoard = {
+    title:title,
+    mainText:mainText
+  }
+  
+  let data = JSON.stringify(getBoard);
+  localStorage.setItem(title,data);
+
+
+  location.href = './board.html';
+}
+
+
+
   // 페이지 버튼 1부터 ~ totalCount까지 [각 페이지 숫자별 페이지 이동 함수]
   // 각 페이지 숫자를 누르면 다른 개시글 목록 보이기
   // 1. tbody.innerText=''; = 리스트비우기
   // 2. pageNumber = 2; 반복문으로 처리
   // 3. boardPage 함수 호출 
-
+  function newIdCancel(){
+    location.href = '../index.html';
+  }
+  function canCel(){
+    location.href = './board.html';
+  }
+  
 
 
 

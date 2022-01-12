@@ -10,9 +10,18 @@
 </head>
 <body>
   <div id=boardCreat>
-    <p>글제목 : <input type="text" id="title" value=""></input></p> 
-    <p><textarea cols="50" rows="10"></textarea></p>
-    <p><input type="submit" value="업로드"></p>
+    <p>글번호</p>
+    <p>작성자</p>
+    <p>작성날짜</p>
+
+    <p>글제목 : <input type="text" id="title"></input></p> 
+    <p><textarea cols="50" rows="10" id="mainText"></textarea></p>
+    <div id="cancel" onclick="canCel()">
+      취소 
+     </div>
+     <div class="save" onclick="newBoard()">
+       작성
+     </div>  
   </div>
 </body>
 </html> 

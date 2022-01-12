@@ -117,7 +117,7 @@ a:link {
   margin-top: 10px;
 }
 
-.cancel {
+#cancel {
   float: right;
   border: 1px solid black;
   background-color: white;
@@ -205,16 +205,14 @@ td {
 }
 
 #boardCreat {
-  float: right;
+
   border: 1px solid black;
   background-color: red;
   color: white;
-  text-align: center;
-  margin-left: 10px;
-  padding: 10px;
+  text-align: left;
+  margin: auto;
   border-radius: 5px;
-  margin-top: 30px;
-  margin-right: 20px;
+
 }
 
 
@@ -224,8 +222,14 @@ td {
   margin-top: 50px;
 }
 
-#boardCreat{
-
-  text-align: left;
-  margin-top: 50px;
+#newBoard{
+  float: right;
+  border: 1px solid black;
+  background-color: red;
+  color: white;
+  text-align: center;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
