@@ -153,26 +153,25 @@ function findAddress() {
 
 // onclick
 
-function boardSet(){
-  boardList.forEach(board => createTr(board));
-  }
 // 게시판 데모데이터
 
 // let boardList = [{no : 0, title: "글제목", content:"글내용", createdAt: "2022-01-04", viewCount:0, writer:"아이디"}]
 
 
-let boardList = Array(45)
-                  .fill()
-                  .map((_, getBoard) => { 
-                    return {  no:getBoard+1,
-                              title:`title`,
-                              content:'글내용'+(getBoard+1),
-                              createdAt:'2021-01-04',
-                              viewCount:0,
-                              writer:'id' }});
+let boardList = []
 
+let tempBoardList = JSON.parse(localStorage.getItem("boardList"));
 
+if(tempBoardList!=null){
+  boardList = tempBoardList;
+}
 
+/*
+  1. 예제 데이터 생성로직을 삭제한다.Array(45).fill().어쩌구저쩌구 를 삭제한다.
+  2. boardList 변수에 localStorage에서 "boardList"키값을 불러와 리스트를 초기화한다.( localStorage.getItem("boardList") )
+  3. localStorage에 "boardList" 키가 없으면 boardList에 빈 배열을 세팅한다.
+  4. 게시글 작성시 boardList.push 하고, localStorage의 "boardList" 값도 업데이트 한다.
+  */
 
 function createTr(board){
 
@@ -201,6 +200,10 @@ function createTr(board){
   let tbody = document.getElementById('tbody');
 
     tbody.appendChild(tr);
+    
+    tr.addEventListener('click',()=>{
+      mainText(board.no)
+    })
 }
 // 페이지 나누기
 
@@ -211,7 +214,7 @@ let totalPageCount = Math.ceil(totalCount / pageSize);
 
 
 function boardPage(){
-  
+  boardList.sort((a,b) => b.no-a.no);
   for(let idx = 0; idx < pageSize; idx++){
     
       board = boardList[(pageNumber-1)*pageSize+idx];
@@ -234,7 +237,7 @@ function boardPageMove(){
 
 
     pageNumbers.addEventListener('click',()=>{
-      pageNumber = num;
+
       document.getElementById('tbody').innerText='';
       boardPage();
       
@@ -251,37 +254,55 @@ function firstCall(){
 function boardCreat(){
   location.href = './boardcreat.html';
 }
+// 게시글 작성 함수
 function newBoard(){
   let title = document.getElementById('title').value
   let mainText = document.getElementById('mainText').value
   
-  let getBoard = {
+  let board = {
+    no:boardList.length+1,
     title:title,
-    mainText:mainText
+    mainText:mainText,
+    writer:sessionStorage.getItem("id"),
+    createdAt:new Date(),
+    viewCount:0
   }
+  boardList.push(board)
+  // boardList.unshift(board)
   
-  let data = JSON.stringify(getBoard);
-  localStorage.setItem(title,data);
+  
+  let data = JSON.stringify(boardList);
+  localStorage.setItem("boardList",data);
 
 
   location.href = './board.html';
 }
-
-
 
   // 페이지 버튼 1부터 ~ totalCount까지 [각 페이지 숫자별 페이지 이동 함수]
   // 각 페이지 숫자를 누르면 다른 개시글 목록 보이기
   // 1. tbody.innerText=''; = 리스트비우기
   // 2. pageNumber = 2; 반복문으로 처리
   // 3. boardPage 함수 호출 
-  function newIdCancel(){
-    location.href = '../index.html';
-  }
-  function canCel(){
-    location.href = './board.html';
-  }
+function newIdCancel(){
+  location.href = '../index.html';
+}
+function canCel(){
+  location.href = './board.html';
+}
   
+function mainText(no){
+  location.href = './viewMainText.html?no='+no;
+}
+
+function viewText(){
+
+  let a = location.href
+
+  a.indexOf("?");
+ //location.search 하면 ?부터 반환
+}
 
 
 
+   
 
