@@ -6,10 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="../css/styles.css" rel="stylesheet"/> 
-  <script src="../js/index.js"></script>
 
 </head>
-<body onload="viewText()">
-  <p></p>
+<body onload="view()">
+  <div id="viewMainTitle">
+    <span>제목 :  </span>
+      <span id="viewTitle"></span> 
+    </h1>
+    
+  </div>
+  
+  <div id="viewMainNumber">
+    <span>번호 : </span>
+    <span id="viewNumber"></span>
+    <span>작성자 : </span>
+    <span id="writer"></span>
+    <span>생성날짜 : </span>
+    <span id="date"></span>
+  </div>
+
+  <div id="mainView">
+    <p><textarea cols="110" rows="45" id="view"></textarea></p>
+  </div>
+  
+  <div class="remove" onclick="view()">
+    삭제
+  </div>  
 </body>
+<script src="../js/index.js"></script>
+
 </html>

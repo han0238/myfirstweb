@@ -158,14 +158,18 @@ function findAddress() {
 // let boardList = [{no : 0, title: "글제목", content:"글내용", createdAt: "2022-01-04", viewCount:0, writer:"아이디"}]
 
 
-let boardList = []
+let boardList = getBoardList();
+//로컬스토리지 boardlist 
 
-let tempBoardList = JSON.parse(localStorage.getItem("boardList"));
+function getBoardList(){
+  let tempBoardList = JSON.parse(localStorage.getItem("boardList"));
 
-if(tempBoardList!=null){
-  boardList = tempBoardList;
+  if(tempBoardList!=null){
+    return tempBoardList;
+  }else{
+    return [];
+  }
 }
-
 /*
   1. 예제 데이터 생성로직을 삭제한다.Array(45).fill().어쩌구저쩌구 를 삭제한다.
   2. boardList 변수에 localStorage에서 "boardList"키값을 불러와 리스트를 초기화한다.( localStorage.getItem("boardList") )
@@ -258,18 +262,25 @@ function boardCreat(){
 function newBoard(){
   let title = document.getElementById('title').value
   let mainText = document.getElementById('mainText').value
-  
+  let dt = new Date();
+  var str = dt.getFullYear()+'년 '+(dt.getMonth()+1)+'월 '+dt.getDate()+'일';
+
+
   let board = {
     no:boardList.length+1,
     title:title,
     mainText:mainText,
     writer:sessionStorage.getItem("id"),
-    createdAt:new Date(),
+    createdAt:str,
     viewCount:0
   }
+
+
   boardList.push(board)
   // boardList.unshift(board)
   
+  
+
   
   let data = JSON.stringify(boardList);
   localStorage.setItem("boardList",data);
@@ -294,15 +305,48 @@ function mainText(no){
   location.href = './viewMainText.html?no='+no;
 }
 
-function viewText(){
+// 글 상세페이지
+function view(){
+  // 상세보기화면 데이터 바인딩
+  // 1. 주소에서 글번호만 빼오기
+  // 2. boardList에서 글번호로 글찾기
+  // 3. 글을 찾았으면 각 자리에 데이터 넣기
 
-  let a = location.href
+  let boardNo = location.search.replace(/[^0-9]/g,'')*1;
 
-  a.indexOf("?");
- //location.search 하면 ?부터 반환
+  let no = document.querySelector('#viewNumber');
+  let title = document.querySelector('#viewTitle');
+  let writer = document.querySelector('#writer');
+  let text = document.querySelector('#view');  
+  let date = document.querySelector('#date');
+  let tmpboard = {}
+
+  for (let i = 0; i < boardList.length; i++){
+    if(boardNo === boardList[i].no){
+      tmpboard=boardList[i];
+      break;
+    }
+  }
+
+  no.innerText=tmpboard.no;
+  title.innerHTML=tmpboard.title;
+  writer.innerText=tmpboard.writer;
+  text.innerText=tmpboard.mainText;
+  date.innerText=tmpboard.createdAt
+
+  let noFilter = boardList.filter((boardList) => {
+    return boardList.no === tmpboard.no;
+  })
+
+  let data = JSON.stringify(noFilter);
+  localStorage.setItem(boardList,data);
+
+
 }
-
-
-
-   
+// boardList.filter
+//글 상세 페이지에서 삭제하기
+//1. boardLIst에서 해당 글 번호 빼고 필터 (pop, shift, unshft, push 불가)
+//2. filteredList[필터한데이터] => localstorege.setItem
+//3. 버튼 클릭 후 삭제하시겠습니까 팝업
+//4. 글 목록 페이지로 이동
 
