@@ -218,15 +218,20 @@ td {
 #boardCreat {
 
   border: 1px solid black;
-  background-color: red;
+  background-color:gray;
   color: white;
-  text-align: left;
-  margin: auto;
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 100px;
   border-radius: 5px;
 
 }
 
-
+#mainTitle{
+  text-align: left;
+  
+}
 #pageMove{
   color: red;
   text-align: center;

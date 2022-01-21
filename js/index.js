@@ -223,6 +223,7 @@ function boardPage(){
     
       board = boardList[(pageNumber-1)*pageSize+idx];
       createTr(board);
+      
     }
   }
 
@@ -241,6 +242,7 @@ function boardPageMove(){
 
 
     pageNumbers.addEventListener('click',()=>{
+      pageNumber=num;
 
       document.getElementById('tbody').innerText='';
       boardPage();
@@ -300,12 +302,14 @@ function newIdCancel(){
 function canCel(){
   location.href = './board.html';
 }
-  
+
 function mainText(no){
   location.href = './viewMainText.html?no='+no;
 }
 
 // 글 상세페이지
+
+
 function view(){
   // 상세보기화면 데이터 바인딩
   // 1. 주소에서 글번호만 빼오기
@@ -333,15 +337,6 @@ function view(){
   writer.innerText=tmpboard.writer;
   text.innerText=tmpboard.mainText;
   date.innerText=tmpboard.createdAt
-
-  let noFilter = boardList.filter((boardList) => {
-    return boardList.no === tmpboard.no;
-  })
-
-  let data = JSON.stringify(noFilter);
-  localStorage.setItem(boardList,data);
-
-
 }
 // boardList.filter
 //글 상세 페이지에서 삭제하기
@@ -349,4 +344,69 @@ function view(){
 //2. filteredList[필터한데이터] => localstorege.setItem
 //3. 버튼 클릭 후 삭제하시겠습니까 팝업
 //4. 글 목록 페이지로 이동
+function boardRemove(){
+  if(confirm('삭제하시겠습니까')){
+  let boardNo = location.search.replace(/[^0-9]/g,'')*1;
+
+  let tmpBoard = {}
+
+  for (let i = 0; i < boardList.length; i++){
+    if(boardNo === boardList[i].no){
+      tmpBoard=boardList[i];
+      break;
+    }
+  }
+  console.log(tmpBoard)
+  let removeFilter = boardList.filter(function(board) {
+    return board !== tmpBoard
+  })
+  console.log(removeFilter)
+  let data = JSON.stringify(removeFilter);
+  localStorage.setItem("boardList",data);
+  
+  location.href = './board.html';
+}
+}
+function editLocation(){
+  let no = location.search.replace(/[^0-9]/g,'')*1;
+  location.href = './editMainText.html?no='+no;
+}
+  
+function boardEdit(){
+  let boardNo = location.search.replace(/[^0-9]/g,'')*1;
+
+
+  let title = document.querySelector('#viewTitle')
+  let text = document.querySelector('#view'); 
+  
+
+  let tmpBoard = {}
+
+  for (let i = 0; i < boardList.length; i++){
+    if(boardNo === boardList[i].no){
+      tmpBoard=boardList[i];
+      break;
+    }
+  }
+
+  title.value=tmpBoard.title;
+  text.value=tmpBoard.mainText;
+
+  console.log(tmpBoard)
+  let newList = boardList.map(board => {
+    if(board.no === boardList.no){
+      return updateBoard;
+    }else{
+      return board;
+    }
+  });
+ /* let removeFilter = boardList.filter(function(board) {
+    return board !== tmpBoard
+  })*/
+  console.log(removeFilter)
+  let data = JSON.stringify(removeFilter);
+  localStorage.setItem("boardList",data);
+}
+
+
 
