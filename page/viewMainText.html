@@ -12,7 +12,7 @@
   <div id="viewMainTitle">
     <span>제목 :  </span>
       <span id="viewTitle"></span> 
-    </h1>
+    
     
   </div>
   
@@ -28,10 +28,13 @@
   <div id="mainView">
     <p><textarea cols="110" rows="45" id="view"></textarea></p>
   </div>
-  
-  <div class="remove" onclick="view()">
+  <div class="remove" onclick="boardRemove()">
     삭제
   </div>  
+  <div id="cancel" onclick="editLocation()">
+    수정
+   </div>
+
 </body>
 <script src="../js/index.js"></script>
 
