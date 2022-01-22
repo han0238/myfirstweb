@@ -360,12 +360,12 @@ function boardRemove(){
   let removeFilter = boardList.filter(function(board) {
     return board !== tmpBoard
   })
-  console.log(removeFilter)
+
   let data = JSON.stringify(removeFilter);
   localStorage.setItem("boardList",data);
   
   location.href = './board.html';
-}
+  }
 }
 function editLocation(){
   let no = location.search.replace(/[^0-9]/g,'')*1;
@@ -373,6 +373,7 @@ function editLocation(){
 }
   
 function boardEdit(){
+  
   let boardNo = location.search.replace(/[^0-9]/g,'')*1;
 
 
@@ -392,21 +393,30 @@ function boardEdit(){
   title.value=tmpBoard.title;
   text.value=tmpBoard.mainText;
 
-  console.log(tmpBoard)
-  let newList = boardList.map(board => {
-    if(board.no === boardList.no){
-      return updateBoard;
-    }else{
-      return board;
-    }
-  });
- /* let removeFilter = boardList.filter(function(board) {
-    return board !== tmpBoard
-  })*/
-  console.log(removeFilter)
-  let data = JSON.stringify(removeFilter);
-  localStorage.setItem("boardList",data);
+
+
+  //if(confirm('삭제하시겠습니까')){
+    let updateBoard = boardList.map(board => {
+      if(board.no === boardList.no){
+        return updateBoard;
+      }else{
+        return board;
+      }
+    });
+    console.log(updateBoard)
+    let data = JSON.stringify(updateBoard);
+    localStorage.setItem("boardList",data);
+
+
+    
+  
+  }
+
+
+
+function editClick(){
+
+  boardEdit()
+
 }
-
-
 

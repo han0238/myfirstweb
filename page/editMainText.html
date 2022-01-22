@@ -5,14 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="../css/styles.css" rel="stylesheet"/> 
+
 </head>
 <body onload="boardEdit()">
-  <div id="#viewTitle">
+  <div id="editTitle">
     <span>제목 : <input type="text" id="viewTitle" size="50"/></span>
   </div>
   <div id="mainView">
     <p><textarea cols="100" rows="45" id="view"></textarea></p>
   </div>
+  <div class="remove" onclick="editClick()">
+    삭제
+  </div>  
 </body>
 
 

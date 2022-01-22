@@ -292,3 +292,18 @@ td {
   margin-top: 50px;
   text-align: center;
 }
+
+#edittMainTitle{
+  border-bottom:1px solid black;
+  text-align: center;
+  color: red;
+  font-size: 30px;
+  margin-bottom: 10px;
+  padding: 40px;
+}
+
+#editTitle{
+  color: blue;
+  margin-left: 300px;
+  margin-top: 50px;
+}
